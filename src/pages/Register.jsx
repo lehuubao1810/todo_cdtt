@@ -19,9 +19,12 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (password.length < 6) {
+            return setError('Password must be at least 6 characters');
+        }
         if (password !== confirmPassword) {
             return setError('Passwords do not match');
-        } 
+        }
         try {
             setError('');
             setLoading(true);
