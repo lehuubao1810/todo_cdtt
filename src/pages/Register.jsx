@@ -12,13 +12,16 @@ function Register() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     console.log(signup)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        if (password !== confirmPassword) {
+            return setError('Passwords do not match');
+        } 
         try {
             setError('');
             setLoading(true);
@@ -26,17 +29,16 @@ function Register() {
 
             await setDoc(doc(db, "users", res.user.uid), {
                 uid: res.user.uid,
-                    email,
-            }) 
+                email,
+            })
             await setDoc(doc(db, "tasks", res.user.uid), {
                 tasks: [],
-            }) 
+            })
             navigate('/');
         } catch (err) {
             setError('Failed to create an account');
             console.log(err);
         }
-
         setLoading(false);
     };
 
@@ -47,16 +49,27 @@ function Register() {
                 <form onSubmit={handleSubmit}>
                     <div className="email">
                         <label>Email </label>
-                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </div>
                     <div className="password">
                         <label> Password </label>
-                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                        
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)} />
+
                     </div>
                     <div className="password">
                         <label> Confirm Password </label>
-                        <input type="password" />
+                        <input
+                            type="password"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
                         {error && <div className='errorLog'>{error}</div>}
                     </div>
                     <button type="submit" disabled={loading}>
