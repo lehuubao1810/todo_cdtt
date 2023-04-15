@@ -123,7 +123,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
 }
 .red {
   border: 2px solid #ea5555;
