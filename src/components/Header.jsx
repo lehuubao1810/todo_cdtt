@@ -32,10 +32,6 @@ function Header(props) {
           {
             modalUser &&
             <div className="modalUser" >
-              <div className="option" >
-                <i className="fa-solid fa-edit"></i>
-                <span>Edit profile</span>
-              </div>
               <div
                 className="option logout"
                 onClick={props.handleLogout}
