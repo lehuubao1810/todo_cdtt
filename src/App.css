@@ -116,7 +116,8 @@
   width: 100%;
   padding: 40px 20px;
   background: var(--color-bg);
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 .tasks {
   width: 100%;

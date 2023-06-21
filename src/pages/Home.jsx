@@ -72,6 +72,13 @@ function Home() {
     const handleModalAdd = () => {
         setStatusModalAdd(true)
     }
+    // const handleModalAddKeyDown = (e) => {
+    //     console.log("press")
+    //     if (e.key === "Enter") {
+    //         e.preventDefault();
+    //         setStatusModalAdd(true)
+    //     }
+    // }
     const handleOverlay = () => {
         setStatusModalAdd(false)
     }
